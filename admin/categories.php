@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="hidden" name="add_category">
             <div class="mb-3">
               <label for="name" class="form-label">Category Name</label>
-              <input type="text" class="form-control" id="name" name="name" required>
+              <input type="text" class="form-control" id="name" name="name" required onkeyup="document.getElementById('slug').value = generateSlug(this.value)">
             </div>
             <div class="mb-3">
               <label for="slug" class="form-label">Slug</label>

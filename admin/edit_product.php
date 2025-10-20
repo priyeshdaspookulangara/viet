@@ -32,7 +32,7 @@ $product = mysqli_fetch_assoc($result);
 
             <div class="mb-3">
               <label for="name" class="form-label">Product Name</label>
-              <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required>
+              <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required onkeyup="document.getElementById('slug').value = generateSlug(this.value)">
             </div>
 
             <div class="mb-3">

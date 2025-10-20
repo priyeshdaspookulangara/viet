@@ -32,12 +32,12 @@ $category = mysqli_fetch_assoc($result);
 
             <div class="mb-3">
               <label for="name" class="form-label">Category Name</label>
-              <input type="text" class="form-control" id="name" name="name" value="<?php echo $category['name']; ?>" required>
+              <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($category['name']); ?>" required onkeyup="document.getElementById('slug').value = generateSlug(this.value)">
             </div>
 
             <div class="mb-3">
               <label for="slug" class="form-label">Slug</label>
-              <input type="text" class="form-control" id="slug" name="slug" value="<?php echo $category['slug']; ?>" required>
+              <input type="text" class="form-control" id="slug" name="slug" value="<?php echo htmlspecialchars($category['slug']); ?>" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Update Category</button>
