@@ -1,8 +1,10 @@
 <?php
-$servername = "localhost";
-$username = "jeoczvkk_priyesh";
-$password = "pearlsPearls2#";
-$dbname = "jeoczvkk_fruit_export";
+$env = parse_ini_file(__DIR__ . '/../admin/.env');
+
+$servername = $env['DB_HOST'];
+$username = $env['DB_USER'];
+$password = $env['DB_PASS'];
+$dbname = $env['DB_NAME'];
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
