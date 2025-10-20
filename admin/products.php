@@ -38,8 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } elseif (isset($_POST['edit_product'])) {
     $id = mysqli_real_escape_string($conn, $_POST['edit_product']);
     $name = mysqli_real_escape_string($conn, $_POST['name']);
-    // ... (rest of the fields)
-    $sql = "UPDATE products SET name = '$name' WHERE id = $id"; // Simplified for brevity
+    $slug = mysqli_real_escape_string($conn, $_POST['slug']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $variety = mysqli_real_escape_string($conn, $_POST['variety']);
+    $size = mysqli_real_escape_string($conn, $_POST['size']);
+    $packaging = mysqli_real_escape_string($conn, $_POST['packaging']);
+    $season = mysqli_real_escape_string($conn, $_POST['season']);
+    $category_id = mysqli_real_escape_string($conn, $_POST['category_id']);
+
+    $sql = "UPDATE products SET name = '$name', slug = '$slug', description = '$description', variety = '$variety', size = '$size', packaging = '$packaging', season = '$season', category_id = '$category_id' WHERE id = $id";
     mysqli_query($conn, $sql);
     header("Location: products.php");
     exit();
@@ -78,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3"><label class="form-label">Size</label><input type="text" name="size" class="form-control"></div>
             <div class="mb-3"><label class="form-label">Packaging</label><input type="text" name="packaging" class="form-control"></div>
             <div class="mb-3"><label class="form-label">Season</label><input type="text" name="season" class="form-control"></div>
-            <div class="mb-3"><label class="form-label">Category</label><select name="category_id" class="form-control"><option value="">Select Category</option><?php $cat_sql = "SELECT * FROM categories"; $cat_result = mysqli_query($conn, $cat_sql); while($cat_row = mysqli_fetch_assoc($cat_result)) { echo "<option value='" . $cat_row['id'] . "'>" . $cat_row['name'] . "</option>"; } ?></select></div>
+            <div class="mb-3"><label class="form-label">Category</label><select name="category_id" class="form-control"><option value="">Select Category</option><?php $cat_sql = "SELECT * FROM categories"; $cat_result = mysqli_query($conn, $cat_sql); while($cat_row = mysqli_fetch_assoc($cat_result)) { echo "<option value='" . $cat_row['id'] . "'>" . htmlspecialchars($cat_row['name']) . "</option>"; } ?></select></div>
             <div class="mb-3"><label class="form-label">Main Image</label><input type="file" name="image_main" class="form-control"></div>
             <div class="mb-3"><label class="form-label">Secondary Image</label><input type="file" name="image_secondary" class="form-control"></div>
             <button type="submit" class="btn btn-primary">Add Product</button>
@@ -106,8 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['name'] . "</td>";
-                echo "<td>" . $row['category_name'] . "</td>";
+                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['category_name']) . "</td>";
                 echo "<td>";
                 echo "<a href='edit_product.php?id=" . $row['id'] . "' class='btn btn-sm btn-warning'>Edit</a>";
                 echo "<form action='products.php' method='POST' style='display:inline-block;'><input type='hidden' name='delete_product' value='" . $row['id'] . "'><button type='submit' class='btn btn-sm btn-danger'>Delete</button></form>";

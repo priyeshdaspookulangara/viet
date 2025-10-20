@@ -82,8 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['name'] . "</td>";
-                echo "<td>" . $row['slug'] . "</td>";
+                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['slug']) . "</td>";
                 echo "<td>";
                 echo "<a href='edit_category.php?id=" . $row['id'] . "' class='btn btn-sm btn-warning'>Edit</a>";
                 echo "<form action='categories.php' method='POST' style='display:inline-block;'><input type='hidden' name='delete_category' value='" . $row['id'] . "'><button type='submit' class='btn btn-sm btn-danger'>Delete</button></form>";

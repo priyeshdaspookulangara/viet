@@ -78,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['name'] . "</td>";
-                echo "<td><img src='../" . $row['image'] . "' width='100'></td>";
+                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                echo "<td><img src='../" . htmlspecialchars($row['image']) . "' width='100'></td>";
                 echo "<td>";
                 echo "<form action='certificates.php' method='POST' style='display:inline-block;'><input type='hidden' name='delete_certificate' value='" . $row['id'] . "'><button type='submit' class='btn btn-sm btn-danger'>Delete</button></form>";
                 echo "</td>";

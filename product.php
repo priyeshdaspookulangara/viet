@@ -14,16 +14,16 @@ if (isset($_GET['slug'])) {
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6">
-      <img src="<?php echo $product['image_main']; ?>" class="img-fluid" alt="<?php echo $product['name']; ?>">
+      <img src="<?php echo htmlspecialchars($product['image_main']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($product['name']); ?>">
     </div>
     <div class="col-md-6">
-      <h2><?php echo $product['name']; ?></h2>
-      <p><?php echo $product['description']; ?></p>
+      <h2><?php echo htmlspecialchars($product['name']); ?></h2>
+      <p><?php echo htmlspecialchars($product['description']); ?></p>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Variety:</strong> <?php echo $product['variety']; ?></li>
-        <li class="list-group-item"><strong>Size:</strong> <?php echo $product['size']; ?></li>
-        <li class="list-group-item"><strong>Packaging:</strong> <?php echo $product['packaging']; ?></li>
-        <li class="list-group-item"><strong>Season:</strong> <?php echo $product['season']; ?></li>
+        <li class="list-group-item"><strong>Variety:</strong> <?php echo htmlspecialchars($product['variety']); ?></li>
+        <li class="list-group-item"><strong>Size:</strong> <?php echo htmlspecialchars($product['size']); ?></li>
+        <li class="list-group-item"><strong>Packaging:</strong> <?php echo htmlspecialchars($product['packaging']); ?></li>
+        <li class="list-group-item"><strong>Season:</strong> <?php echo htmlspecialchars($product['season']); ?></li>
       </ul>
     </div>
   </div>
@@ -70,10 +70,10 @@ if (isset($_GET['slug'])) {
           while ($related_row = mysqli_fetch_assoc($related_result)) {
             echo '<div class="col-md-3 mb-4">';
             echo '<div class="card">';
-            echo '<img src="' . $related_row['image_main'] . '" class="card-img-top" alt="' . $related_row['name'] . '">';
+            echo '<img src="' . htmlspecialchars($related_row['image_main']) . '" class="card-img-top" alt="' . htmlspecialchars($related_row['name']) . '">';
             echo '<div class="card-body">';
-            echo '<h5 class="card-title">' . $related_row['name'] . '</h5>';
-            echo '<a href="product.php?slug=' . $related_row['slug'] . '" class="btn btn-primary">View Details</a>';
+            echo '<h5 class="card-title">' . htmlspecialchars($related_row['name']) . '</h5>';
+            echo '<a href="product.php?slug=' . htmlspecialchars($related_row['slug']) . '" class="btn btn-primary">View Details</a>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -96,9 +96,9 @@ if (isset($_GET['slug'])) {
           while ($cert_row = mysqli_fetch_assoc($cert_result)) {
             echo '<div class="col-md-4 mb-4">';
             echo '<div class="card">';
-            echo '<img src="' . $cert_row['image'] . '" class="card-img-top" alt="' . $cert_row['name'] . '">';
+            echo '<img src="' . htmlspecialchars($cert_row['image']) . '" class="card-img-top" alt="' . htmlspecialchars($cert_row['name']) . '">';
             echo '<div class="card-body">';
-            echo '<h5 class="card-title text-center">' . $cert_row['name'] . '</h5>';
+            echo '<h5 class="card-title text-center">' . htmlspecialchars($cert_row['name']) . '</h5>';
             echo '</div>';
             echo '</div>';
             echo '</div>';

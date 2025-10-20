@@ -4,10 +4,10 @@ include 'includes/header.php';
 ?>
 
 <div class="container mt-5">
-  <h2 class="text-center mb-4">Latest Products</h2>
+  <h2 class="text-center mb-4">Our Products</h2>
   <div class="row">
     <?php
-    $sql = "SELECT * FROM products WHERE status = 1 ORDER BY id DESC LIMIT 4";
+    $sql = "SELECT * FROM products WHERE status = 1";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {

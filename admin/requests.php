@@ -43,13 +43,13 @@ include 'includes/header.php';
                 while ($row = mysqli_fetch_assoc($result)) {
                   echo "<tr>";
                   echo "<td>" . $row['id'] . "</td>";
-                  echo "<td>" . $row['product_name'] . "</td>";
-                  echo "<td>" . $row['name'] . "</td>";
-                  echo "<td>" . $row['company'] . "</td>";
-                  echo "<td>" . $row['email'] . "</td>";
-                  echo "<td>" . $row['phone'] . "</td>";
-                  echo "<td>" . $row['message'] . "</td>";
-                  echo "<td>" . $row['created_at'] . "</td>";
+                  echo "<td>" . htmlspecialchars($row['product_name']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['company']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['message']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
                   echo "</tr>";
                 }
               } else {
