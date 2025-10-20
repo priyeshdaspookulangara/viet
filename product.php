@@ -29,6 +29,71 @@ if (isset($_GET['slug'])) {
   </div>
 
   <div class="row mt-5">
+    <div class="col-12">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">Information</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="spec-tab" data-bs-toggle="tab" data-bs-target="#spec" type="button" role="tab" aria-controls="spec" aria-selected="false">Specifications</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+          <div class="mt-3">
+            <h5>Information</h5>
+            <p><?php echo htmlspecialchars($product['information']); ?></p>
+            <h5>Packaging</h5>
+            <p><?php echo nl2br(htmlspecialchars($product['packaging_info'])); ?></p>
+            <h5>Storage Conditions</h5>
+            <p><?php echo htmlspecialchars($product['storage_conditions']); ?></p>
+            <h5>Shelf Life</h5>
+            <p><?php echo htmlspecialchars($product['shelf_life']); ?></p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="spec" role="tabpanel" aria-labelledby="spec-tab">
+          <table class="table table-bordered mt-3">
+            <tbody>
+              <tr>
+                <td><strong>Colour</strong></td>
+                <td><?php echo htmlspecialchars($product['spec_colour']); ?></td>
+              </tr>
+              <tr>
+                <td><strong>Odor and Flavor</strong></td>
+                <td><?php echo htmlspecialchars($product['spec_odor_flavor']); ?></td>
+              </tr>
+              <tr>
+                <td><strong>Ingredients</strong></td>
+                <td><?php echo htmlspecialchars($product['spec_ingredients']); ?></td>
+              </tr>
+              <tr>
+                <td><strong>Brix</strong></td>
+                <td><?php echo htmlspecialchars($product['spec_brix']); ?></td>
+              </tr>
+              <tr>
+                <td><strong>Acidity</strong></td>
+                <td><?php echo htmlspecialchars($product['spec_acidity']); ?></td>
+              </tr>
+              <tr>
+                <td><strong>pH</strong></td>
+                <td><?php echo htmlspecialchars($product['spec_ph']); ?></td>
+              </tr>
+              <tr>
+                <td><strong>Pulp</strong></td>
+                <td><?php echo htmlspecialchars($product['spec_pulp']); ?></td>
+              </tr>
+              <tr>
+                <td><strong>Additives</strong></td>
+                <td><?php echo htmlspecialchars($product['spec_additives']); ?></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
     <div class="col-md-8">
       <h3>Request Quote & COA</h3>
       <form action="submit_request.php" method="POST">

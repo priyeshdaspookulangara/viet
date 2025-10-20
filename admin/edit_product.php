@@ -79,6 +79,23 @@ $product = mysqli_fetch_assoc($result);
               </select>
             </div>
 
+            <hr>
+            <h5>Additional Information</h5>
+            <div class="mb-3"><label class="form-label">Information</label><textarea name="information" class="form-control"><?php echo htmlspecialchars($product['information']); ?></textarea></div>
+            <div class="mb-3"><label class="form-label">Packaging Info</label><textarea name="packaging_info" class="form-control"><?php echo htmlspecialchars($product['packaging_info']); ?></textarea></div>
+            <div class="mb-3"><label class="form-label">Storage Conditions</label><input type="text" name="storage_conditions" class="form-control" value="<?php echo htmlspecialchars($product['storage_conditions']); ?>"></div>
+            <div class="mb-3"><label class="form-label">Shelf Life</label><input type="text" name="shelf_life" class="form-control" value="<?php echo htmlspecialchars($product['shelf_life']); ?>"></div>
+            <hr>
+            <h5>Technical Specifications</h5>
+            <div class="mb-3"><label class="form-label">Colour</label><input type="text" name="spec_colour" class="form-control" value="<?php echo htmlspecialchars($product['spec_colour']); ?>"></div>
+            <div class="mb-3"><label class="form-label">Odor and Flavor</label><input type="text" name="spec_odor_flavor" class="form-control" value="<?php echo htmlspecialchars($product['spec_odor_flavor']); ?>"></div>
+            <div class="mb-3"><label class="form-label">Ingredients</label><textarea name="spec_ingredients" class="form-control"><?php echo htmlspecialchars($product['spec_ingredients']); ?></textarea></div>
+            <div class="mb-3"><label class="form-label">Brix</label><input type="text" name="spec_brix" class="form-control" value="<?php echo htmlspecialchars($product['spec_brix']); ?>"></div>
+            <div class="mb-3"><label class="form-label">Acidity</label><input type="text" name="spec_acidity" class="form-control" value="<?php echo htmlspecialchars($product['spec_acidity']); ?>"></div>
+            <div class="mb-3"><label class="form-label">pH</label><input type="text" name="spec_ph" class="form-control" value="<?php echo htmlspecialchars($product['spec_ph']); ?>"></div>
+            <div class="mb-3"><label class="form-label">Pulp</label><input type="text" name="spec_pulp" class="form-control" value="<?php echo htmlspecialchars($product['spec_pulp']); ?>"></div>
+            <div class="mb-3"><label class="form-label">Additives</label><input type="text" name="spec_additives" class="form-control" value="<?php echo htmlspecialchars($product['spec_additives']); ?>"></div>
+
             <button type="submit" class="btn btn-primary">Update Product</button>
           </form>
         </div>

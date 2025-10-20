@@ -18,6 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $packaging = mysqli_real_escape_string($conn, $_POST['packaging']);
     $season = mysqli_real_escape_string($conn, $_POST['season']);
     $category_id = mysqli_real_escape_string($conn, $_POST['category_id']);
+    $information = mysqli_real_escape_string($conn, $_POST['information']);
+    $packaging_info = mysqli_real_escape_string($conn, $_POST['packaging_info']);
+    $storage_conditions = mysqli_real_escape_string($conn, $_POST['storage_conditions']);
+    $shelf_life = mysqli_real_escape_string($conn, $_POST['shelf_life']);
+    $spec_colour = mysqli_real_escape_string($conn, $_POST['spec_colour']);
+    $spec_odor_flavor = mysqli_real_escape_string($conn, $_POST['spec_odor_flavor']);
+    $spec_ingredients = mysqli_real_escape_string($conn, $_POST['spec_ingredients']);
+    $spec_brix = mysqli_real_escape_string($conn, $_POST['spec_brix']);
+    $spec_acidity = mysqli_real_escape_string($conn, $_POST['spec_acidity']);
+    $spec_ph = mysqli_real_escape_string($conn, $_POST['spec_ph']);
+    $spec_pulp = mysqli_real_escape_string($conn, $_POST['spec_pulp']);
+    $spec_additives = mysqli_real_escape_string($conn, $_POST['spec_additives']);
 
     $image_main = '';
     if (isset($_FILES['image_main']) && $_FILES['image_main']['error'] == 0) {
@@ -31,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       move_uploaded_file($_FILES['image_secondary']['tmp_name'], '../' . $image_secondary);
     }
 
-    $sql = "INSERT INTO products (name, slug, description, variety, size, packaging, season, image_main, image_secondary, category_id) VALUES ('$name', '$slug', '$description', '$variety', '$size', '$packaging', '$season', '$image_main', '$image_secondary', '$category_id')";
+    $sql = "INSERT INTO products (name, slug, description, variety, size, packaging, season, image_main, image_secondary, category_id, information, packaging_info, storage_conditions, shelf_life, spec_colour, spec_odor_flavor, spec_ingredients, spec_brix, spec_acidity, spec_ph, spec_pulp, spec_additives) VALUES ('$name', '$slug', '$description', '$variety', '$size', '$packaging', '$season', '$image_main', '$image_secondary', '$category_id', '$information', '$packaging_info', '$storage_conditions', '$shelf_life', '$spec_colour', '$spec_odor_flavor', '$spec_ingredients', '$spec_brix', '$spec_acidity', '$spec_ph', '$spec_pulp', '$spec_additives')";
     mysqli_query($conn, $sql);
     header("Location: products.php");
     exit();
@@ -45,8 +57,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $packaging = mysqli_real_escape_string($conn, $_POST['packaging']);
     $season = mysqli_real_escape_string($conn, $_POST['season']);
     $category_id = mysqli_real_escape_string($conn, $_POST['category_id']);
+    $information = mysqli_real_escape_string($conn, $_POST['information']);
+    $packaging_info = mysqli_real_escape_string($conn, $_POST['packaging_info']);
+    $storage_conditions = mysqli_real_escape_string($conn, $_POST['storage_conditions']);
+    $shelf_life = mysqli_real_escape_string($conn, $_POST['shelf_life']);
+    $spec_colour = mysqli_real_escape_string($conn, $_POST['spec_colour']);
+    $spec_odor_flavor = mysqli_real_escape_string($conn, $_POST['spec_odor_flavor']);
+    $spec_ingredients = mysqli_real_escape_string($conn, $_POST['spec_ingredients']);
+    $spec_brix = mysqli_real_escape_string($conn, $_POST['spec_brix']);
+    $spec_acidity = mysqli_real_escape_string($conn, $_POST['spec_acidity']);
+    $spec_ph = mysqli_real_escape_string($conn, $_POST['spec_ph']);
+    $spec_pulp = mysqli_real_escape_string($conn, $_POST['spec_pulp']);
+    $spec_additives = mysqli_real_escape_string($conn, $_POST['spec_additives']);
 
-    $sql = "UPDATE products SET name = '$name', slug = '$slug', description = '$description', variety = '$variety', size = '$size', packaging = '$packaging', season = '$season', category_id = '$category_id' WHERE id = $id";
+    $sql = "UPDATE products SET name = '$name', slug = '$slug', description = '$description', variety = '$variety', size = '$size', packaging = '$packaging', season = '$season', category_id = '$category_id', information = '$information', packaging_info = '$packaging_info', storage_conditions = '$storage_conditions', shelf_life = '$shelf_life', spec_colour = '$spec_colour', spec_odor_flavor = '$spec_odor_flavor', spec_ingredients = '$spec_ingredients', spec_brix = '$spec_brix', spec_acidity = '$spec_acidity', spec_ph = '$spec_ph', spec_pulp = '$spec_pulp', spec_additives = '$spec_additives' WHERE id = $id";
     mysqli_query($conn, $sql);
     header("Location: products.php");
     exit();
@@ -88,6 +112,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3"><label class="form-label">Category</label><select name="category_id" class="form-control"><option value="">Select Category</option><?php $cat_sql = "SELECT * FROM categories"; $cat_result = mysqli_query($conn, $cat_sql); while($cat_row = mysqli_fetch_assoc($cat_result)) { echo "<option value='" . $cat_row['id'] . "'>" . htmlspecialchars($cat_row['name']) . "</option>"; } ?></select></div>
             <div class="mb-3"><label class="form-label">Main Image</label><input type="file" name="image_main" class="form-control"></div>
             <div class="mb-3"><label class="form-label">Secondary Image</label><input type="file" name="image_secondary" class="form-control"></div>
+            <hr>
+            <h5>Additional Information</h5>
+            <div class="mb-3"><label class="form-label">Information</label><textarea name="information" class="form-control"></textarea></div>
+            <div class="mb-3"><label class="form-label">Packaging Info</label><textarea name="packaging_info" class="form-control"></textarea></div>
+            <div class="mb-3"><label class="form-label">Storage Conditions</label><input type="text" name="storage_conditions" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Shelf Life</label><input type="text" name="shelf_life" class="form-control"></div>
+            <hr>
+            <h5>Technical Specifications</h5>
+            <div class="mb-3"><label class="form-label">Colour</label><input type="text" name="spec_colour" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Odor and Flavor</label><input type="text" name="spec_odor_flavor" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Ingredients</label><textarea name="spec_ingredients" class="form-control"></textarea></div>
+            <div class="mb-3"><label class="form-label">Brix</label><input type="text" name="spec_brix" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Acidity</label><input type="text" name="spec_acidity" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">pH</label><input type="text" name="spec_ph" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Pulp</label><input type="text" name="spec_pulp" class="form-control"></div>
+            <div class="mb-3"><label class="form-label">Additives</label><input type="text" name="spec_additives" class="form-control"></div>
             <button type="submit" class="btn btn-primary">Add Product</button>
           </form>
         </div>
